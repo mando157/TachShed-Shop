@@ -3,34 +3,50 @@
 const cursor = document.querySelector(".cursor");
 let isHoveringLink = false;
 
-document.addEventListener("mousemove", (e) => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-  if (!isHoveringLink) {
-    cursor.style.opacity = "1";
+// Hide cursor on touch devices (mobile/tablet)
+if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+  if (cursor) {
+    cursor.style.display = "none";
   }
-});
-document.addEventListener("mouseleave", () => {
-  cursor.style.opacity = "0";
-});
+} else {
+  // Only run cursor code on non-touch devices
+  document.addEventListener("mousemove", (e) => {
+    if (cursor) {
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+      if (!isHoveringLink) {
+        cursor.style.opacity = "1";
+      }
+    }
+  });
+  document.addEventListener("mouseleave", () => {
+    if (cursor) {
+      cursor.style.opacity = "0";
+    }
+  });
 
-document.addEventListener("mouseenter", () => {
-  if (!isHoveringLink) {
-    cursor.style.opacity = "1";
-  }
-});
-document.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("mouseenter", () => {
-    isHoveringLink = true;
-    cursor.style.transform = "scale(2.5)";
-    cursor.style.opacity = "0.2";
+  document.addEventListener("mouseenter", () => {
+    if (cursor && !isHoveringLink) {
+      cursor.style.opacity = "1";
+    }
   });
-  link.addEventListener("mouseleave", () => {
-    isHoveringLink = false;
-    cursor.style.transform = "scale(1)";
-    cursor.style.opacity = "1";
+  document.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("mouseenter", () => {
+      isHoveringLink = true;
+      if (cursor) {
+        cursor.style.transform = "scale(2.5)";
+        cursor.style.opacity = "0.2";
+      }
+    });
+    link.addEventListener("mouseleave", () => {
+      isHoveringLink = false;
+      if (cursor) {
+        cursor.style.transform = "scale(1)";
+        cursor.style.opacity = "1";
+      }
+    });
   });
-});
+}
 
 //* Landing Background Images Slider
 const landingSection = document.querySelector(".landing");
