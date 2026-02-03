@@ -15,7 +15,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: var(--wight);
+  background-color: rgba(0, 0, 0, 0.05);
   scroll-behavior: smooth;
 }
 
@@ -638,6 +638,52 @@ header .header nav ul li a h4 {
   font-size: 30px;
   font-weight: normal;
 }
+/** Brands Section */
+.brand .brand-box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.brand-box .btext-1,
+.brand-box .btext-2,
+.brand-box .btext-3,
+.brand-box .btext-4,
+.brand-box .btext-5 {
+  display: flex;
+  flex: 0 0 220px;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(0, 0, 0, 0.05);
+}
+.brand-box .btext-1 h3,
+.brand-box .btext-2 h3,
+.brand-box .btext-3 h3,
+.brand-box .btext-4 h3,
+.brand-box .btext-5 h3 {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 24px;
+}
+.brand-box .btext-1 h3,
+.brand-box .btext-4 h3 {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.brand-box .btext-2 h3,
+.brand-box .btext-3 h3 {
+  font-family: "Oxanium", sans-serif;
+}
+.brand-box .btext-3 h3 {
+  text-transform: uppercase;
+}
+.brand-box .btext-4 h3 {
+  text-decoration: underline;
+}
+.brand-box .btext-5 h3 {
+  font-family: "Rajdhani", sans-serif;
+  text-transform: uppercase;
+}
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 
@@ -904,6 +950,14 @@ header .header nav ul li a h4 {
   }
   .information .text_best a {
     margin-top: 20px;
+  }
+  /** Brands */
+  .brand-box .btext-1,
+  .brand-box .btext-2,
+  .brand-box .btext-3,
+  .brand-box .btext-4,
+  .brand-box .btext-5 {
+    flex: 1 1 100%;
   }
 }
 @media (max-width: 800px) and (min-width: 600px) {
